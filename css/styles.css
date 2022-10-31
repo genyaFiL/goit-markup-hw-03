@@ -9,22 +9,73 @@
 	--button-background-color: #188ce8;
 	--secondary-background-color: #f5f4fa;
 	--card-background-color: #eeeeee;
+	--primary-border: 1px solid #ececec;
+
+	--indent: 30px;
+	--items: 3;
 }
+
+/* Global Style start */
 
 body {
 	font-family: "Roboto", "FF DIN", sans-serif;
 	color: var(--primary-text-color);
 }
 
+/* reset start */
+
 a {
 	color: inherit;
 	text-decoration: none;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	margin: 0;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+.link {
+	text-decoration: none;
+	color: currentColor;
+}
+
 .list {
+	margin: 0;
+	padding: 0;
 	list-style-type: none;
 	font-style: normal;
 }
+
+/* reset end */
+
+.section {
+	padding-top: 94px;
+	padding-bottom: 94px;
+
+	outline: 2px solid red;
+	outline-offset: -2px;
+}
+
+.container {
+	width: 1200px;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* reset end */
 
 .current {
 	color: var(--accent-text-color);
@@ -34,10 +85,32 @@ a {
 .btn-item {
 	color: inherit;
 }
+/* Global Style end */
 
 /* Navigation */
 
+.header-container,
+.header-nav,
+.site-nav,
+.header-list {
+	display: flex;
+	align-items: center;
+}
+
+.header-container {
+	min-height: 80px;
+	justify-content: center;
+	border-bottom: var(--primary-border);
+}
+.header-nav {
+	margin-right: auto;
+}
+.header-container .link {
+	padding: 32px 0;
+}
+
 .logo {
+	margin-right: 92px;
 	font-family: "Raleway";
 	font-weight: 700;
 	font-size: 26px;
@@ -53,17 +126,15 @@ a {
 .contacts .link {
 	color: var(--secondary-text-color);
 }
-/* 
-.site-nav .link:hover,
-.site-nav .link:focus,
-.contacts .link:focus,
-.contacts .link:hover {
-	color: var(--accent-text-color);
-} */
 
 .link:hover,
 .link:focus {
 	color: var(--accent-text-color);
+}
+
+.site-nav,
+.header-list {
+	gap: 50px;
 }
 
 .site-nav,
@@ -75,8 +146,13 @@ a {
 	color: var(--navigation-text-color);
 }
 
+.header-list {
+	gap: 50px;
+}
+
 /* Main */
 
+/* Hero */
 .visually-hidden {
 	position: absolute;
 	white-space: nowrap;
@@ -92,6 +168,24 @@ a {
 
 .hero {
 	background-color: var(--hero-background-color);
+}
+.hero.section {
+	padding-top: 200px;
+	padding-bottom: 250px;
+}
+.hero-btn {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	min-width: 216px;
+	height: 50px;
+	border-radius: 4px;
+}
+.hero-title {
+	width: 696px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 30px;
 }
 
 .hero-title,
@@ -122,6 +216,7 @@ a {
 }
 
 .section-title {
+	margin-bottom: 30px;
 	font-weight: 700;
 	font-size: 36px;
 	line-height: 1.17;
@@ -129,7 +224,21 @@ a {
 	letter-spacing: 0.03em;
 	color: var(--navigation-text-color);
 }
+
+/* About */
+
+.card-set {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--indent);
+}
+
+.card-set-item {
+	flex-basis: calc((100% - var(--indent) * (var(--items) - 1)) / (var(--items)));
+}
+
 .about-subtitle {
+	margin-bottom: 10px;
 	font-weight: 700;
 	font-size: 14px;
 	line-height: 16px;
@@ -144,10 +253,22 @@ a {
 	letter-spacing: 0.03em;
 	color: var(--secondary-text-color);
 }
+.about .card-set-item {
+	--items: 4;
+}
+/* Team */
+
 .team {
 	background-color: var(--secondary-background-color);
 }
+
+.team-wrap {
+	padding: 30px 10px;
+	text-align: center;
+}
+
 .team-subtitle {
+	margin-bottom: 10px;
 	font-weight: 500;
 	font-size: 16px;
 	line-height: 1.19;
@@ -162,16 +283,34 @@ a {
 	color: var(--secondary-text-color);
 }
 
+.team .card-set-item {
+	--items: 4;
+}
+
 /* Footer */
 
 footer {
 	background-color: var(--hero-background-color);
+	padding-top: 60px;
+	padding-bottom: 60px;
+}
+footer .logo {
+	display: block;
+	margin-bottom: 20px;
 }
 
+.filter {
+	padding-bottom: 34px;
+}
+.project {
+	padding-top: 0;
+}
 .logo .logo-text2 {
 	color: var(--primary-white-color);
 }
-
+.address-list-item {
+	margin-bottom: 9px;
+}
 .contacts-adr {
 	font-size: 14px;
 	line-height: 1.71;
@@ -189,7 +328,15 @@ footer {
 
 /* Portfolio */
 
+.portfolio-btn {
+	display: flex;
+	justify-content: center;
+	gap: 8px;
+}
+
 .btn-item {
+	padding: 6px 23px;
+	min-width: 73px;
 	font-weight: 500;
 	font-size: 16px;
 	line-height: 1.62;
@@ -197,6 +344,7 @@ footer {
 	color: var(--navigation-text-color);
 	background-color: var(--secondary-background-color);
 	border: none;
+	border-radius: 4px;
 }
 
 .btn-item:hover,
@@ -216,6 +364,11 @@ footer {
 	line-height: 2;
 	letter-spacing: 0.06em;
 	color: var(--navigation-text-color);
+}
+
+.project-list-item {
+	border: var(--primary-border);
+	margin: 0 -2px;
 }
 .portfolio-text {
 	font-size: 16px;
